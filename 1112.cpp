@@ -88,9 +88,7 @@ int main()
     }
     printf("%d\n", grafo.dijsktra( E , T ) );
     if( test != 0 )
-    {
       printf("\n");
-    }
   }
   return 0;
 }
