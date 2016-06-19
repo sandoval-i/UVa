@@ -42,7 +42,7 @@ d backtracking( int voy , d gasolina , d costo )
 int main()
 
 {
-  int numEstaciones , caso = 0 , i;
+  int numEstaciones , caso = 0 , i ;
   Estacion a( 0.0 , 0.0 );
   while( scanf("%lf", &distanciaFinal ) && distanciaFinal > 0.0 )
   {
