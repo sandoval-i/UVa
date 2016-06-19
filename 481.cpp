@@ -53,7 +53,7 @@ int main()
     {
       camino.push_front( numeros[comienzo] );
       comienzo = sucesores[comienzo];
-    };
+    }
     printf("%lu\n-\n", lis.size() );
     for( int t = 0 ; t < camino.size() ; t++ )
       printf("%d\n", camino[t] );
