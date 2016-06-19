@@ -60,7 +60,7 @@ int main()
       scanf("%d %d", &row , &numBombasRow );
       while( numBombasRow-- )
       {
-        scanf("%d", &column );
+        scanf( "%d", &column );
         laberinto[row][column] = true;
       }
     }
