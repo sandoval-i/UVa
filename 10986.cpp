@@ -31,10 +31,6 @@ struct Grafo
     nodos[fin].addEdge( inicio , costo );
   }
 
-  static bool comp( ii par1 , ii par2 )
-  {
-    return par1.second < par2.second;
-  }
 
   int dijsktra( int &inicio , int &fin )
   {
