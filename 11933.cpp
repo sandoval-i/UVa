@@ -26,7 +26,7 @@ int main()
         }
         t++;
     }
-    printf("%lu %lu\n", a , b );
+    printf( "%lu %lu\n", a , b );
   }
   return 0;
 }
