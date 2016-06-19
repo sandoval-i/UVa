@@ -25,7 +25,7 @@ int main()
       scanf("%d", &jackpot[i] );
     maximum_sum = kadane ( jackpot );
     if( maximum_sum > 0 )
-      printf("The maximum winning streak is %d.\n", maximum_sum );
+      printf( "The maximum winning streak is %d.\n", maximum_sum );
     else
       printf("Losing streak.\n" );
   }
