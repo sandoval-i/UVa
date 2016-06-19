@@ -14,7 +14,7 @@ typedef vector < ii > vii;
 #define openW freopen( "out" , "w" , stdout )
 
 int total , numero , best , resultado;
-vi songs ;
+vi songs;
 
 void backtrack( int llevo , int indice , int usados )
 {
