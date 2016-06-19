@@ -8,7 +8,7 @@ typedef vector < int > vi;
 
 vector < vi > productos;
 vector < vi > dp;
-int M;
+int M ;
 
 int backtrack( int money , int garment )
 {
