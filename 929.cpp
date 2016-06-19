@@ -8,7 +8,7 @@ typedef vector < int > vi;
 typedef queue < iii > qii;
 typedef vector < bool > vb;
 
-const int INF = 999999;
+const int INF = 999999 ;
 
 int posX[] = { 0 , 1 , 0 , -1 };
 int posY[] = { 1 , 0 , -1 , 0 };
