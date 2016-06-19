@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int menosInfinito = -10000000;
+const int menosInfinito = -10000000 ;
 
 struct Dato
 {
