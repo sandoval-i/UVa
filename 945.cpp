@@ -15,7 +15,7 @@ struct container
     this->llevo = 0;
   }
 };
-vector< container > cargoShip;
+vector< container > cargoShip ;
 int menorNumPaquetes , p , maxCapacidadActual , menorNumero;
 container aux( 0 , 0 );
 vector< container > posiblesContainers , posiblesContainers2;
