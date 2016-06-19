@@ -79,7 +79,7 @@ int main()
       grafo.vertices[i].addEdge( nuevoAmigo );
     }
   }
-  scanf("%d", &T );
+  scanf( "%d", &T );
   while( T-- )
   {
     scanf("%d", &source );
