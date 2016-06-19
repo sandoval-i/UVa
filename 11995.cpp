@@ -73,8 +73,6 @@ int main()
       continue;
     }
     if( esColaPrioridad )
-    {
       printf("priority queue\n");
-    }
   }
 }
