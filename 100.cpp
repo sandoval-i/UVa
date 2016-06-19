@@ -36,12 +36,12 @@ int calcular( unsigned long i )
     if( par( i ) )
       dp[i] = calcular( i >> 1 ) + 1;
     else
-      dp[i] = calcular( 3 * i + 1 ) + 1;
+      dp[i] = calcular( i + i << 1 + 1 ) + 1;
     return dp[i];
   }
   if( par( i ) )
     return calcular( i >> 1 ) + 1;
-  return calcular( 3 * i + 1 ) + 1;
+  return calcular( i + i << 1 + 1 ) + 1;
 }
 
 int mayor( unsigned long i , unsigned long j )
