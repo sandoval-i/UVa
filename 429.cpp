@@ -4,7 +4,6 @@ using namespace std;
 
 struct Vertex
 {
-public:
   string dato;
   int id;
   vector < int > vecinos;
