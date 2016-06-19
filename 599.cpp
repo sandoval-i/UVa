@@ -6,7 +6,7 @@ const int dif = 65;
 
 struct Nodo
 {
-  vector < int > adjList;
+  vector < int > adjList ;
 };
 
 bitset< 26 > visitados , existe;
