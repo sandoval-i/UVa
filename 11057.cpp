@@ -14,9 +14,7 @@ int main()
     mayor.first = ( 1 << 30 );
     mayor.second = -100000;
     for( int t = 0 ; t < numLibros ; t++ )
-    {
       scanf("%d" , &precios[t]);
-    }
     scanf("%d", &money );
     sort( precios.begin() , precios.end() );
     for( int t = 0 ; t < numLibros ; t++ )
