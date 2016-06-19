@@ -6,7 +6,7 @@ typedef vector < int > vi;
 
 #define foi( i , n ) for( ; i < n ; i++ )
 
-int filas , columnas;
+int filas , columnas ;
 
 bool puede( vector < vi > &matriz )
 {
