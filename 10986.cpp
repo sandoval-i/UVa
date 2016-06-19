@@ -88,9 +88,9 @@ int main()
     }
     resul = graph.dijsktra( s , t );
     if( resul == -1 )
-    printf("Case #%d: unreachable\n" , ++x );
+      printf("Case #%d: unreachable\n" , ++x );
     else
-    printf("Case #%d: %d\n", ++x , resul );
+      printf("Case #%d: %d\n", ++x , resul );
   }
   return 0;
 }
