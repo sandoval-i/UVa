@@ -33,7 +33,7 @@ public class Main
 	{
 		try
 		{
-			Scanner entrada = new Scanner( System.in );
+		    Scanner entrada = new Scanner( System.in );
 		    BigInteger actual;
 		    while( entrada.hasNextLine() )
 		    {
