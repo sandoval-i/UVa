@@ -34,7 +34,7 @@ int main()
       for( ull c = b ; c < limite - ( a + b ); c++ )
       {
         if( a * b * c * c > maximoPro || a + b + 2 * c > maximaSuma )
-          break;
+          break ;
         x = a + b + c;
         y = a * b * c;
         if( x > maximaSuma || y > maximoPro )
