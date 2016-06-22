@@ -51,7 +51,7 @@ int backtrack( int pasajeros , int total , int indice , vector < Ticket > Bus )
 
 int main()
 {
-  while( scanf("%d%d%d", &capacidad , &ciudadFinal , &numeroTickets ) )
+  while( scanf( "%d%d%d", &capacidad , &ciudadFinal , &numeroTickets ) )
   {
     vector < Ticket > Bus;
     if( capacidad == 0 && ciudadFinal == 0 && numeroTickets == 0 )
