@@ -9,7 +9,7 @@ public class Main {
 		BigInteger b;
 		BigInteger c = new BigInteger( "17" );
 		BufferedReader bs = new BufferedReader( new InputStreamReader( System.in ) );
-		String linea ;
+		String linea;
 		while( true )
 		{
 			linea = bs.readLine();
