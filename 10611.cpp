@@ -49,7 +49,7 @@ int main()
     else
       printf("X ");
     if( may )
-      printf("%d\n", chimps[mayor] );
+      printf("%d\n" , chimps[mayor] );
     else
       printf("X\n");
   }
