@@ -42,7 +42,7 @@ int main()
           if( !dif )
             break;
         }
-      printf("Closest sum to %d is %d.\n", actual , closest );
+      printf("Closest sum to %d is %d.\n" , actual , closest );
     }
   }
   return 0;
