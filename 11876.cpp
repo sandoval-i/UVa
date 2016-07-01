@@ -69,7 +69,7 @@ int main()
     first = lower_bound( sequence.begin() , sequence.end() , inicio ) - sequence.begin();
     last = upper_bound( sequence.begin() , sequence.end() , fin) - sequence.begin() - 1;
     ans = last - first;
-    printf("Case %d: %d\n", ++caso , ans + 1 );
+    printf( "Case %d: %d\n", ++caso , ans + 1 );
   }
   return 0;
 }
