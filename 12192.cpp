@@ -19,28 +19,26 @@ typedef long long ll;
 #define turnOnBit( n , i ) ( n | ( 1 << i ) )
 #define ignore cin.ignore();
 
-int N , M , Q , L , U , llevo , maximo , posLower;
-vi::iterator ans;
-vector < vi > matriz;
+int N , M , Q , L , U , llevo , maximo , ans;
+int matriz[501][501];
 
 int solve( void )
 {
   maximo = 0;
   foi( i , 0 , N )
   {
-    ans = lower_bound( matriz[i].begin() , matriz[i].end() , L );
-    if( ans == matriz[i].end() )
+    ans = lower_bound( matriz[i] , matriz[i] + M , L ) - matriz[i];
+    if( ans == M )
       continue;
-    if( *ans > U )
+    if( matriz[i][ans] > U )
       continue;
     maximo = max( maximo , 1 );
-    posLower = ans - matriz[i].begin();
     llevo = 1;
     foi( j , i + 1 , N )
     {
-      if( posLower + llevo >= M )
+      if( ans + llevo >= M )
         break;
-      if( matriz[j][posLower + llevo] <= U )
+      if( matriz[j][ans + llevo] <= U )
         maximo = max( maximo , llevo + 1 );
       else
         break;
@@ -54,7 +52,6 @@ int main()
 {
     while( scanf( "%d %d " , &N , &M ) , N || M )
     {
-        matriz.assign( N , vi(  M , 0 ) );
         foi( i , 0 , N )
             foi( j , 0 , M )
                 scanf( "%d" , &matriz[i][j] );
@@ -64,7 +61,7 @@ int main()
             scanf("%d %d" , &L , &U );
             printf( "%d\n" , solve() );
         }
-        printf("-\n") ;
+        printf("-\n");
     }
     return 0;
 }
