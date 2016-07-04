@@ -64,7 +64,7 @@ int main()
             scanf("%d %d" , &L , &U );
             printf( "%d\n" , solve() );
         }
-        printf("-\n");
+        printf("-\n") ;
     }
     return 0;
 }
