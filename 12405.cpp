@@ -20,7 +20,7 @@ typedef long long ll;
 #define ignore cin.ignore();
 
 char field[101];
-bitset <101> covered;
+bitset < 101 > covered;
 
 int N , total , k;
 
