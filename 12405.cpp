@@ -46,12 +46,9 @@ int main()
     scanf("%d", &N );
     scanf("%s", field );
     covered.reset();
-    foi( i , 0 , N )
-    {
       if( field[i] != '#' )
         if( !covered[i] )
           cover( i + 1 ) , total++;
-    }
     printf("Case %d: %d\n", ++caso , total );
   }
   return 0;
