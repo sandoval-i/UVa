@@ -20,7 +20,7 @@ typedef long long ll;
 #define ignore cin.ignore();
 
 int n , m , vessels[1001] , voy , low , mid , high , last , suma , contenedor , tam;
-unsigned long long total;
+unsigned long long total ;
 
 bool probar( int &maxCapacidad )
 {
