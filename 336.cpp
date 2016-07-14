@@ -34,7 +34,6 @@ int solve( void )
     par = colaBFS.front(); colaBFS.pop();
     voy = par.first , dist = par.second;
     vi &vecinos = grafo[voy];
-
     foi( i , 0 , vecinos.size )
       if( !visitados[vecinos[i]] )
         if( dist > 0 )  colaBFS.push( ii( vecinos[i] , dist - 1 ) ) , visitados[vecinos[i]] = true , reachable++;
