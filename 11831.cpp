@@ -99,7 +99,7 @@ int main()
       scanf(" %c", &grafo[i][j] );
       if( !found )
         if( grafo[i][j] != '*' && grafo[i][j] != '.' && grafo[i][j] != '#' )
-          voyX = i , voyY = j , direccion = grafo[i][j] , grafo[i][j] = '.' , found = true;
+          voyX = i , voyY = j , direccion = grafo[i][j] , grafo[i][j] = '.' , found = true ;
     }
     foi( i , 0 , 4 ) if( direcciones[i] == direccion ){ posDir = i ; break; }
     foi( i , 0 , numInstrucciones ) scanf(" %c", &instrucciones[i] );
