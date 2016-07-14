@@ -18,7 +18,7 @@ typedef long long ll;
 #define ignore cin.ignore()
 
 map < vi , int > frecuencias;
-vector < int > data;
+vi data;
 
 int main()
 {
