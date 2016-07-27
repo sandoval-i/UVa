@@ -7,46 +7,40 @@ typedef pair < int , int > ii;
 typedef pair < int , ii > iii;
 typedef vector < ii > vii;
 typedef long long ll;
-#define foi( i , n ) for( int i = 0 ; i < n ; i++ )
+#define foi( i , k , n ) for( int i = k ; i < n ; i++ )
 #define size size()
-#define pb( n ) push_back( n )
-#define last( n ) n.size - 1
+#define pb push_back
 #define openR freopen( "in" , "r" , stdin )
 #define openW freopen( "out" , "w" , stdout )
 #define impar( i ) i & 1
 #define par( i ) !( i & 1 )
 #define testBit( n , i ) ( n & ( 1 << i ) )
 #define turnOnBit( n , i ) ( n | ( 1 << i ) )
-#define ignore cin.ignore();
-
-int N , Q , query ;
-vi marbles;
+#define ignore cin.ignore()
 
 int main()
 {
-  int caso = 0  , dif;
-  vi::iterator ans;
-  bool found;
+  int N , Q , marbles[10001] , caso = 0 , ans , query;
+  bitset < 10001 > existe;
   while( scanf("%d %d", &N , &Q ) , N || Q )
   {
-    marbles.assign( N , 0 );
-    foi( i , N )
-      scanf("%d", &marbles[i] );
-    sort( marbles.begin() , marbles.end() );
-    printf("CASE# %d:\n" , ++caso );
-    foi( i , Q )
+    existe.reset();
+    printf("CASE# %d:\n" , ++caso);
+    foi( i , 0 , N )  scanf("%d", &marbles[i] ) , existe[marbles[i]] = true;
+    sort( marbles , marbles + N );
+    while( Q-- )
     {
-      found = false;
       scanf("%d", &query );
-      ans = lower_bound( marbles.begin() , marbles.end() , query );
-      if( *ans == query )
-        dif = ans - marbles.begin() + 1 , found = true;
-      else if( *( ans + 1 ) == query )
-        dif = ans - marbles.begin() , found = true;
-      if( found )
-        printf( "%d found at %d\n" , query ,  dif );
+      if( query > marbles[N-1] || query < marbles[0] || !existe[query] )
+      {
+        printf("%d not found\n" , query );
+        continue;
+      }
+      ans = lower_bound( marbles , marbles + N , query ) - marbles;
+      if( ans == N || marbles[ans] != query )
+        printf("%d not found\n", query );
       else
-        printf("%d not found\n", query  );
+        printf("%d found at %d\n", query , ans + 1   );
     }
   }
   return 0;
