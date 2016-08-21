@@ -41,7 +41,7 @@ struct DisjointSets
   {
     int i = find( p );
     int j = find( q );
-    if( i == j )  return;
+    if( i == j ) return;
     if( rank[i] > rank[j] )
     {
       father[j] = i;
