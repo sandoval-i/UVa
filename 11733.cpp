@@ -56,22 +56,20 @@ struct DisjointSets
 
 };
 
-int N , M , A , numAirports , numComponentes;
+int N , M , A , numComponentes;
 unsigned long long minCost;
-bitset < 10000 > airport;
 
 int main()
 {
-  int casos , x , y , costo , caso = 0 , city1 , city2;
+  int casos , x , y , costo , caso = 0;
   scanf("%d", &casos );
   while( casos-- )
   {
     scanf("%d %d %d", &N , &M , &A );
+    minCost = 0;
     numComponentes = N;
-    airport.reset();
     vector < edge > lados;
     DisjointSets ds( N );
-    numAirports = minCost = 0;
     foi( i , 0 , M )
     {
       scanf("%d %d %d", &x , &y , &costo );
@@ -84,3 +82,4 @@ int main()
   }
   return 0;
 }
+
