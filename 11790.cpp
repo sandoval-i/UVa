@@ -38,9 +38,9 @@ int main()
       max_longitud_lds = max( max_longitud_lds , peso_lds[j] );
     }
     if( max_longitud_lis >= max_longitud_lds )
-      printf("Case %d. Increasing (%d). Decreasing (%d).\n", ++caso , max_longitud_lis , max_longitud_lds );
+      printf( "Case %d. Increasing (%d). Decreasing (%d).\n", ++caso , max_longitud_lis , max_longitud_lds );
     else
-      printf("Case %d. Decreasing (%d). Increasing (%d).\n", ++caso , max_longitud_lds , max_longitud_lis );
+      printf( "Case %d. Decreasing (%d). Increasing (%d).\n", ++caso , max_longitud_lds , max_longitud_lis );
   }
   return 0;
 }
