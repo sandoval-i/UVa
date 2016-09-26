@@ -2,7 +2,6 @@
 
 using namespace std;
 
-#define MAX_S 100
 #define MAX_P 500
 
 struct DisjointSets
