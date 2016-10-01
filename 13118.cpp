@@ -4,7 +4,8 @@
 #include <cstring>
 using namespace std;
 
-int R, C, love_cell_x, love_cell_y, init1_x, init1_y, init2_x, init2_y, state[42][42][42][42];
+int R, C, love_cell_x, love_cell_y, init1_x, init1_y, init2_x, init2_y;
+short state[42][42][42][42];
 int pinguino1_x_libre[] = { -1 , 1 , 0 , 0 } , pinguino1_y_libre[] = { 0 , 0 , 1 , -1 };
 int pinguino2_x_libre[] = { -1 , 1 , 0 , 0 } , pinguino2_y_libre[] = { 0 , 0 , -1 , 1 };
 char matriz[42][42];
@@ -23,7 +24,7 @@ int bfs()
 {
   queue < estado > colaBFS;
   memset( state, -1, sizeof state );
-  state[init1_x][init1_y][init2_x][init2_y] = state[init2_x][init2_y][init1_x][init1_y] = 0;
+  state[init1_x][init1_y][init2_x][init2_y] = /*state[init2_x][init2_y][init1_x][init1_y] = */0;
   colaBFS.push( estado( init1_x, init1_y, init2_x, init2_y ) );
   estado voy;
   int pasos , x_p1 , y_p1 , x_p2 , y_p2;
@@ -45,21 +46,21 @@ int bfs()
       {
         colaBFS.push( estado( x_p1, y_p1, x_p2, y_p2 ) );
         state[x_p1][y_p1][x_p2][y_p2] = pasos;
-        state[x_p2][y_p2][x_p1][y_p1] = pasos;
+        //state[x_p2][y_p2][x_p1][y_p1] = pasos;
         continue;
       }
       if( matriz[x_p1][y_p1] != '#' && matriz[x_p2][y_p2] == '#' && state[x_p1][y_p1][voy.x_2][voy.y_2] == -1 )
       {
         colaBFS.push( estado( x_p1 , y_p1 , voy.x_2 , voy.y_2 ) );
         state[x_p1][y_p1][voy.x_2][voy.y_2] = pasos;
-        state[voy.x_2][voy.y_2][x_p1][y_p1] = pasos;
+        //state[voy.x_2][voy.y_2][x_p1][y_p1] = pasos;
         continue;
       }
       if( matriz[x_p1][y_p1] == '#' && matriz[x_p2][y_p2] != '#' && state[voy.x_1][voy.y_1][x_p2][y_p2] == -1  )
       {
         colaBFS.push( estado( voy.x_1, voy.y_1 , x_p2, y_p2 ) );
         state[voy.x_1][voy.y_1][x_p2][y_p2] = pasos;
-        state[x_p2][y_p2][voy.x_1][voy.y_1] = pasos;
+        //state[x_p2][y_p2][voy.x_1][voy.y_1] = pasos;
         continue;
       }
     }
@@ -94,3 +95,4 @@ int main()
   }
   return 0;
 }
+
