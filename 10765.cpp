@@ -32,15 +32,6 @@ void dfs( int from )
   }
 }
 
-void dfs_modified( int u )
-{
-  if( u == 0 )  return;
-  visited[u] = true;
-  foi( i , 0 , graph[u].size() )
-    if( !visited[graph[u][i]] )
-      dfs(graph[u][i]);
-}
-
 bool comp( ii a , ii b )
 {
   return ( a.second == b.second ) ? a.first < b.first : a.second > b.second;
