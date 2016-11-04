@@ -45,8 +45,8 @@ int main()
   int consecutivo , id_from , id_to , caso = 0;
   string name_from , name_to;
   bool first = true;
-  // ios::sync_with_stdio(false);
-  // cin.tie(NULL);
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
   while( cin >> v >> e , v || e )
   {
     if( first ) first = false;
