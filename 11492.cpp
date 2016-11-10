@@ -85,7 +85,6 @@ int main()
       word_langs[i].push_back(id1);
       word_langs[i].push_back(id2);
     }
-    // cout << "Leido papu\n";
     int ans = dijkstra( 0 , 1 );
     if( ans == -1 ) cout << "impossivel";
     else  cout << ans;
