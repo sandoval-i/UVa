@@ -2,46 +2,83 @@
 
 using namespace std;
 
-#define MAX_N 50001
+#define foi( i , n , k )  for( int i = n ; i < k ; ++i )
+#define MAX_N 50005
 
-vector < vector < int > > grafo;
-bitset < MAX_N > visited ;
+int grafo[MAX_N];
 int num_visitados[MAX_N];
+int dfs_num[MAX_N] , dfs_low[MAX_N] , iteracion;
+bitset < MAX_N > visited;
+vector < int > pila_scc;
+vector < vector < int > > scc;
 
-int dfs( int u )
+void dfs( int i )
 {
-  visited[u] = true;
-  num_visitados[u] = 0;
-  int v = grafo[u][0];
-  if( !visited[v] )
-    num_visitados[u] += 1 + dfs(v);
-  visited[u] = false;
-  return num_visitados[u];
+  dfs_num[i] = dfs_low[i] = iteracion++;
+  visited[i] = true;
+  pila_scc.push_back(i);
+  if( dfs_num[grafo[i]] == -1 )
+    dfs( grafo[i] );
+  if( visited[grafo[i]] )
+    dfs_low[i] = min( dfs_low[i] , dfs_low[grafo[i]] );
+  if( dfs_num[i] == dfs_low[i] )
+  {
+    vector < int > this_scc;
+    while(1)
+    {
+      int tope = pila_scc.back();
+      pila_scc.pop_back();
+      this_scc.push_back(tope);
+      visited[tope] = false;
+      if( tope == i ) break;
+    }
+    scc.push_back(this_scc);
+  }
+}
+
+void dfs2( int u )
+{
+  if( num_visitados[grafo[u]] == -1 )
+    dfs2(grafo[u]);
+  num_visitados[u] = 1 + num_visitados[grafo[u]];
 }
 
 int main()
 {
-  int casos , N , origen , destino , ans_node , ans_max , caso = 0;
-  scanf("%d", &casos );
+  int casos , nodos , from , to , m , visited_m , caso = 0;
+  scanf( "%d" , &casos );
   while( casos-- )
   {
-    scanf("%d", &N );
-    grafo.assign( N , vector < int > () );
+    scc.clear();
     visited.reset();
-    ans_node = ans_max = -1;
+    memset( dfs_num , -1 , sizeof dfs_num );
+    memset( dfs_low , -1 , sizeof dfs_low );
     memset( num_visitados , -1 , sizeof num_visitados );
-    for( int i = 0 ; i < N ; ++i )
+    iteracion = 0;
+    scanf( "%d" , &nodos );
+    foi( i , 0 , nodos )
     {
-      scanf("%d %d", &origen , &destino );
-      grafo[--origen].push_back( --destino );
+      scanf( "%d %d" , &from , &to );
+      grafo[from - 1] = to - 1;
     }
-    for( int i = 0 ; i < N ; ++i )
-    {
-      if( num_visitados[i] == -1 ) dfs( i );
-      if( num_visitados[i] > ans_max )
-        ans_max = num_visitados[i] , ans_node = i + 1;
-    }
-    printf("Case %d: %d\n", ++caso , ans_node );
+    visited_m = 0;
+    foi( i , 0 , nodos )
+      if( dfs_num[i] == -1 )
+        dfs(i);
+    foi( i , 0 , scc.size() )
+      if( scc[i].size() > 1 )
+          foi( j , 0 , scc[i].size() )
+            num_visitados[scc[i][j]] = scc[i].size() - 1;
+    foi( i , 0 , nodos )
+      if( num_visitados[i] == -1 )
+          dfs2(i);
+    foi( i , 0 , nodos )
+      if( num_visitados[i] > visited_m )
+      {
+        m = i;
+        visited_m = num_visitados[i];
+      }
+    printf("Case %d: %d\n" , ++caso , m + 1 );
   }
   return 0;
 }
