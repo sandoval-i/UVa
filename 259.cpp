@@ -76,7 +76,7 @@ int main()
             {
                 from = app -'A' + 1;
                 to = pcs[i] - '0' + 27;
-                adjMatriz[from][to] = 1 << 30;
+                adjMatriz[from][to] = 1;
             }
         }
         if( !works )    return 0;
