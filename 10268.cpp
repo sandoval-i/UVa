@@ -6,6 +6,8 @@ int main()
 {
     int x , n , ans , pot;
     string linea , tok;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
     while( cin >> x )
     {
         cin.ignore();
