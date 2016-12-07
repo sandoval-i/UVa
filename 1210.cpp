@@ -11,7 +11,7 @@ vector < int > primes;
 void sieve( int lim )
 {
     is_prime.set();
-    for( ll i = 2 ; i <= lim ; ++i  )
+    for( ll i = 2 ; i <= lim ; ++i )
         if( is_prime[i] )
         {
             for( ll j = i * i ; j <= lim ; j += i )    is_prime[j] = false;
