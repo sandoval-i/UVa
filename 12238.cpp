@@ -19,8 +19,8 @@ void build( vector < int > &ocurrences )
     foi( i , 0 , ocurrences.size() )    st[i][0] = ocurrences[i];
     for( int j = 1 ; j < columns ; ++j )
         for( int i = 0 ; i + ( 1 << j ) - 1 < ocurrences.size() ; ++i )
-            if( height[st[i + ( 1 << ( j - 1) )][j-1]] < height[st[i][j-1]] )
-                st[i][j] = st[i + ( 1 << ( j - 1) )][j-1];
+            if( height[st[i + ( 1 << ( j - 1 ) )][j-1]] < height[st[i][j-1]] )
+                st[i][j] = st[i + ( 1 << ( j - 1 ) )][j-1];
             else
                 st[i][j] = st[i][j-1];
 }
