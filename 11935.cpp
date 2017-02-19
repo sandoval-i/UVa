@@ -13,21 +13,6 @@ struct op
         par = -1;
     }
 
-    void print()
-    {
-        cout << time << " ";
-        if(gas)
-            cout << "Gas";
-        if(mech)
-            cout << "Mechanic";
-        if(leak)
-            cout << "Leak";
-        if(fc)
-            cout << "Fuel consumption " << par;
-        if(goal)
-            cout << "Goal";
-    }
-
 };
 
 double use(int diff , int fc)
