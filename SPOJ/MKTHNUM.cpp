@@ -15,10 +15,14 @@ struct wt {
     wt(vector<int> arr) {
         root = build(arr, *min_element(arr.begin(), arr.end()), *max_element(arr.begin(), arr.end()), arr.begin(), arr.end());
     }
+    pair<int,int> map_it(int i, int j, vector<int>& mapl) {
+        return pair<int,int>(i ? mapl[i - 1] : 0, mapl[j] - 1);
+    }
     int kth(int i, int j, int k, node*& curr) {
         if(!curr->left) return curr->l;
         int c = curr->mapl[j] - (i ? curr->mapl[i - 1] : 0);
-        return k <= c ? kth(i ? curr->mapl[i - 1] : 0, curr->mapl[j] - 1, k, curr->left) : kth(i ? curr->mapr[i - 1] : 0, curr->mapr[j] - 1, k - c, curr->right);
+        pair<int,int> l = map_it(i, j, curr->mapl), r = map_it(i, j, curr->mapr);
+        return k <= c ? kth(l.first, l.second, k, curr->left) : kth(r.first, r.second, k - c, curr->right);
     }
     int kth(int i, int j, int k) {
         return kth(i, j, k, this->root);
