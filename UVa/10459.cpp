@@ -62,18 +62,13 @@ int main() {
     int N,K,v;
     while(cin >> N) {
         memset(p, -1, sizeof p);
-        memset(adj, false, sizeof adj);
-        foi(u,0,N) tree[u].clear();
         foi(u,0,N) {
             cin >> K;
+            tree[u].clear();
             while(K--) {
                 cin >> v;
                 --v;
-                if(!adj[u][v]) {
-                    tree[u].push_back(v);
-                    tree[v].push_back(u);
-                    adj[u][v] = adj[v][u] = true;
-                }
+                tree[u].push_back(v);
             }
         }
         dfs();
