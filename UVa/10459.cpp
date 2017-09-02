@@ -61,10 +61,10 @@ int main() {
     cin.tie(NULL);
     int N,K,v;
     while(cin >> N) {
-        memset(p, -1, sizeof p);
         foi(u,0,N) {
             cin >> K;
             tree[u].clear();
+            p[u] = -1;
             while(K--) {
                 cin >> v;
                 --v;
