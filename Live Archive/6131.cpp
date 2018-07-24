@@ -1,76 +1,52 @@
 #include <bits/stdc++.h>
+#define foi(i,k,n) for(int i = (int)k; i < (int)n; ++i)
+
 using namespace std;
 typedef long long ll;
-typedef pair<ll,ll> ii;
-const ll INF = 1000000000000000LL;
-int N,K;
-ll dp[1001][1001];
-vector<ii> points;
-vector<vector<ll>> c;
 
-struct sum2d {
-    vector<vector<ll>> sum;
-    sum2d(vector<vector<ll>>& arr) {
-        sum.resize(arr.size(), vector<ll>(arr[0].size(), 0LL));
-        for(int j = 0; j < (int)arr[0].size(); ++j)
-            for(int i = 0; i < (int)arr.size(); ++i) {
-                sum[i][j] = arr[i][j];
-                if(i) sum[i][j] += sum[i - 1][j];
-            }
-    }
-    ll query(int l, int r) {
-        ll res = sum[r][r];
-        if(l) res -= sum[l - 1][r];
-        if(l > r) return  INF;
-        return res;
-    }
-};
+const int MAXN = 5 + 1000;
+ll POS[MAXN], W[MAXN], memo[MAXN][MAXN], c[MAXN][MAXN];
+int N, K;
 
-void preprocess() {
-    c.assign(points.size(), vector<ll>(points.size(), 0LL));
-    for(int i = 0; i < (int)points.size(); ++i)
-        for(int j = i; j < (int)points.size(); ++j)
-            c[i][j] = points[i].second * (points[j].first - points[i].first);
-}
-
-int get_dp(int i, int j, int l, int r, sum2d& q) {
-    dp[i][j] = INF;
-    int res;
-    for(int k = max(l, i - 2); k <= min(r, j - 1); ++k) {
-        ll p = dp[i - 1][k] + q.query(1 + k, j);
-        if(p < dp[i][j]) {
-            dp[i][j] = p;
-            res = k;
+int dp(int k, int i, int mink, int maxk) {
+    int bestk = -1;
+    ll ans = numeric_limits<ll>::max();
+    for(int j = max(k - 1, mink); j <= min(maxk, i); ++j) {
+        if(c[j][i] + memo[k - 1][j - 1] < ans) {
+            ans = c[j][i] + memo[k - 1][j - 1];
+            bestk = j;
         }
     }
-    return res;
+    memo[k][i] = ans;
+    return bestk;
 }
 
-void compute_dp(int i, int jleft, int jright, int kleft, int kright, sum2d& q) {
-    if(jleft <= jright) {
-        int jmid = (jleft + jright) >> 1;
-        int bestk = get_dp(i, jmid, kleft, kright, q);
-        compute_dp(i, jleft, jmid - 1, kleft, bestk, q);
-        compute_dp(i, 1 + jmid, jright, bestk, kright, q);
-    }
+void calc(int klay, int mink, int maxk, int l, int r) {
+    if(l > r) return;
+    int m = (l + r) >> 1;
+    int bestk = dp(klay, m, mink, maxk);
+    calc(klay, mink, bestk, l, m - 1);
+    calc(klay, bestk, maxk, 1 + m, r);
 }
 
 ll solve() {
-    sum2d q(c);
-    for(int i = 0; i < N; ++i)
-        dp[1][i] = q.query(0, i);
-    for(int i = 2; i <= K; ++i)
-        compute_dp(i, i - 1, N - 1, 0, N - 1, q);
-    return dp[K][N - 1];
+    foi(i,0,N)
+        memo[1][i] = c[0][i];
+    foi(k,2,1+K) calc(k,0,N-1,k-1,N-1);
+    return memo[K][N - 1];
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+    ios::sync_with_stdio(false);cin.tie(0);
     while(cin >> N >> K) {
-        points.resize(N);
-        for(auto &u: points) cin >> u.first >> u.second;
-        preprocess();
+        foi(i,0,N) cin >> POS[i] >> W[i];
+        foi(i,0,N) {
+            ll ans = 0LL;
+            for(int j = i; j >= 0; --j) {
+                ans += (W[j] * (POS[i] - POS[j]));
+                c[j][i] = ans;
+            }
+        }
         cout << solve() << '\n';
     }
     return 0;
