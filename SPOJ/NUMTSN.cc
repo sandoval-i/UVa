@@ -21,7 +21,7 @@ inline int mul(int a, int b) {
   return (1LL * a * b) % MOD;
 }
 
-constexpr int MAXN = 51;
+constexpr int MAXN = 52;
 constexpr int MAXDFIF = 16;
 
 int memo[MAXN][33][33][2][2]; // dp (posicion i, #6's - #3's, #9's - 6's, flag)
